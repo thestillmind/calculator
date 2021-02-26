@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <title>Calculator!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        html,
+        body {
+            margin: 0 10px 0 10px;
+            padding: 0;
+            color: rgba(68, 68, 68, 0.9);
+            font-family: 'Raleway', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <script>
+
+
+
+
+        function subtract(input) {
+            return input.reduce((total, current) => total - current);      
+          console.log("subtract");
+            return a - b;
+        }
+
+        function sum(input) {
+           // console.log("sum input is "+input);
+            return input.reduce((total, current) => total + current, 0);
+        }
+
+        function multiply(input) {
+            console.log("multiply");       
+            return input.reduce((total, current) => total * current);
+        }
+    
+
+        function divide(input){
+            console.log("divide");
+            return input.reduce((total,current)=>total/current);
+        }
+
+        function operate(num, operand){
+        
+            if(operand=="+"){         
+             return sum(num);          
+            }
+
+      
+        }
+
+        /*Create a new function operate that takes an 
+        operator and 2 numbers and then calls one of the above functions on the numbers.*/
+       // console.log(sum([2,3]));
+       console.log(operate([2,3,5,3],'+'));
+
+    </script>
+</body>
+
+</html>
