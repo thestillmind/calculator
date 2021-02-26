@@ -17,17 +17,45 @@
         * {
             box-sizing: border-box;
         }
+
+
+        .calculator {
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+        .number {
+            width:50px;
+            height: 50px;
+        }
     </style>
 </head>
 
 
 <body>
 
+    <main>
+
+        <div class="calculator-container">
+
+            <div class="calculator">
+                <div class="number">1</div>
+                <div class="number">2</div>
+                <div class="number">3</div>
+                <div class="number">4</div>
+                <div class="number">5</div>
+                <div class="number">6</div>
+                <div class="number">7</div>
+                <div class="number">8</div>
+                <div class="number">9</div>
+                <div class="number">0</div>
+            </div>
+
+        </div>
+
+    </main>
+
 
     <script>
-
-
-
 
         function subtract(input) {
             return input.reduce((total, current) => total - current);      
@@ -43,8 +71,7 @@
         function multiply(input) {
             console.log("multiply");       
             return input.reduce((total, current) => total * current);
-        }
-    
+        }    
 
         function divide(input){
             console.log("divide");
@@ -55,15 +82,25 @@
         
             if(operand=="+"){         
              return sum(num);          
-            }
+            }     
+            
+            if(operand=="-"){         
+             return subtract(num);          
+            }    
 
-      
+            if(operand=="*"){         
+             return multiply(num);          
+            }    
+
+            if(operand=="/"){         
+             return divide(num);          
+            } 
         }
 
         /*Create a new function operate that takes an 
         operator and 2 numbers and then calls one of the above functions on the numbers.*/
        // console.log(sum([2,3]));
-       console.log(operate([2,3,5,3],'+'));
+       console.log(operate([4,2],'/'));
 
     </script>
 </body>
