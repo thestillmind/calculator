@@ -18,14 +18,29 @@
             box-sizing: border-box;
         }
 
+        .calculator-container {
+            margin: auto auto;
+            width: 500px;
+            height: 150px;
+        
+        }
 
         .calculator {
-            display: grid;
-            grid-template-columns: auto auto auto;
+        
         }
-        .number {
-            width:50px;
-            height: 50px;
+
+        .display input {
+            width: 100%;
+        }
+
+        .buttons-container {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+        }
+
+        .button {
+            border: 1px solid black;
+            background-color: #ccc;
         }
     </style>
 </head>
@@ -38,18 +53,22 @@
         <div class="calculator-container">
 
             <div class="calculator">
-                <div class="number">1</div>
-                <div class="number">2</div>
-                <div class="number">3</div>
-                <div class="number">4</div>
-                <div class="number">5</div>
-                <div class="number">6</div>
-                <div class="number">7</div>
-                <div class="number">8</div>
-                <div class="number">9</div>
-                <div class="number">0</div>
-            </div>
+                <div class="display"><input></div>
+                <div class="buttons-container">
 
+                    <button class="button">(</button><button class="button">)</button><button
+                        class="button">%</button><button class="button">A/C</button>
+                    <button class="button">7</button><button class="button">8</button><button
+                        class="button">9</button><button class="button">/</button>
+                    <button class="button">4</button><button class="button">5</button><button
+                        class="button">6</button><button class="button">X</button>
+                    <button class="button">1</button><button class="button">2</button><button
+                        class="button">3</button><button class="button">-</button>
+                    <button class="button">0</button><button class="button">.</button><button
+                        class="button">=</button><button class="button">+</button>
+
+                </div>
+            </div>
         </div>
 
     </main>
@@ -58,49 +77,57 @@
     <script>
 
         function subtract(input) {
-            return input.reduce((total, current) => total - current);      
-          console.log("subtract");
+            return input.reduce((total, current) => total - current);
+            console.log("subtract");
             return a - b;
         }
 
         function sum(input) {
-           // console.log("sum input is "+input);
+            // console.log("sum input is "+input);
             return input.reduce((total, current) => total + current, 0);
         }
 
         function multiply(input) {
-            console.log("multiply");       
+            console.log("multiply");
             return input.reduce((total, current) => total * current);
-        }    
-
-        function divide(input){
-            console.log("divide");
-            return input.reduce((total,current)=>total/current);
         }
 
-        function operate(num, operand){
-        
-            if(operand=="+"){         
-             return sum(num);          
-            }     
-            
-            if(operand=="-"){         
-             return subtract(num);          
-            }    
+        function divide(input) {
+            console.log("divide");
+            return input.reduce((total, current) => total / current);
+        }
 
-            if(operand=="*"){         
-             return multiply(num);          
-            }    
+        function operate(num, operand) {
 
-            if(operand=="/"){         
-             return divide(num);          
-            } 
+            if (operand == "+") {
+                return sum(num);
+            }
+
+            if (operand == "-") {
+                return subtract(num);
+            }
+
+            if (operand == "X") {
+                return multiply(num);
+            }
+
+            if (operand == "/") {
+                return divide(num);
+            }
         }
 
         /*Create a new function operate that takes an 
         operator and 2 numbers and then calls one of the above functions on the numbers.*/
-       // console.log(sum([2,3]));
-       console.log(operate([4,2],'/'));
+        // console.log(sum([2,3]));
+      // console.log(operate([4, 2], '/'));
+
+        const button=document.querySelectorAll('.calculator button');
+        button.forEach((calcBtn)=>{
+           /* calcBtn.addEventListener('click',()=>{
+                alert("Button pressed! "+n.innerText);
+            });*/
+            calcBtn.addEventListener('click', ()=>{console.log(operate([4,2],`${calcBtn.innerText}`))});
+        });
 
     </script>
 </body>
