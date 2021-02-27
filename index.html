@@ -22,12 +22,10 @@
             margin: auto auto;
             width: 500px;
             height: 150px;
-        
+
         }
 
-        .calculator {
-        
-        }
+        .calculator {}
 
         .display input {
             width: 100%;
@@ -119,15 +117,18 @@
         /*Create a new function operate that takes an 
         operator and 2 numbers and then calls one of the above functions on the numbers.*/
         // console.log(sum([2,3]));
-      // console.log(operate([4, 2], '/'));
+        // console.log(operate([4, 2], '/'));
+        const input=document.querySelector('.calculator input');
+        input.value=10;
 
-        const button=document.querySelectorAll('.calculator button');
-        button.forEach((calcBtn)=>{
-           /* calcBtn.addEventListener('click',()=>{
-                alert("Button pressed! "+n.innerText);
-            });*/
-            calcBtn.addEventListener('click', ()=>{console.log(operate([4,2],`${calcBtn.innerText}`))});
-        });
+
+
+        const button = document.querySelectorAll('.calculator button');
+        button.forEach((calcBtn) => {
+       //     calcBtn.addEventListener('click', () => { console.log(operate([4, 2], `${calcBtn.innerText}`))});
+       calcBtn.addEventListener('click', () => { input.value=operate([4, 2], `${calcBtn.innerText}`)});
+       
+    });
 
     </script>
 </body>
