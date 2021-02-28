@@ -115,10 +115,6 @@
             }
         }
 
-        /*Create a new function operate that takes an 
-        operator and 2 numbers and then calls one of the above functions on the numbers.*/
-        // console.log(sum([2,3]));
-        // console.log(operate([4, 2], '/'));
         const input = document.querySelector('.calculator input');
 
         let num = '';
@@ -128,29 +124,19 @@
         const numberBtn = document.querySelectorAll('.calculator .num-btn');
         numberBtn.forEach((item) => {
             item.addEventListener('click', () => {
-                //firstNum += item.innerText;
-                //input.value=firstNum;
-
                 input.value = num += item.innerText;
-
             });
         });
 
 
         const operationButton = document.querySelectorAll('.calculator .operation-btn');
         operationButton.forEach((calcBtn) => {//To add the same eventlistener to multiple items, you need to loop thru each item to add the listener
-            //     calcBtn.addEventListener('click', () => { console.log(operate([4, 2], `${calcBtn.innerText}`))});
             calcBtn.addEventListener('click', () => {
 
                 arr.push(+num);
                 num = '';
                 symbol += calcBtn.innerText;
 
-                // operation();
-                /*  arr.push(+num);
-                  num='';
-                  symbol+=calcBtn.innerText;
-                  equals(arr,`${calcBtn.innerText}`);*/
             });
         });
 
@@ -158,10 +144,7 @@
             arr.push(+num);
             num = '';
             symbol += calcBtn.innerText;
-            //equals(arr,`${calcBtn.innerText}`);
         }
-        //
-
 
         const equalsButton = document.querySelector('.calculator .equals-btn');
         equalsButton.addEventListener('click', () => {
@@ -171,20 +154,18 @@
             arr.push(+num);
             console.log("arr is " + array + " symbol is " + symbol);
             if (array.length == 2) {
-                console.log("array is "+array);
+                console.log("array is " + array);
                 return input.value = operate(array, symbol);
             }
         }
 
-        const clearBtn=document.querySelector('.calculator .clear-btn');
-        clearBtn.addEventListener('click', ()=>{
-         num = '';
-         symbol = '';
-         arr = [];
-        input.value='';
+        const clearBtn = document.querySelector('.calculator .clear-btn');
+        clearBtn.addEventListener('click', () => {
+            num = '';
+            symbol = '';
+            arr = [];
+            input.value = '';
         });
-
-
 
     </script>
 </body>
