@@ -56,13 +56,13 @@
 
                     <button class="button">(</button><button class="button">)</button><button
                         class="button">%</button><button class="button">A/C</button>
-                    <button class="button">7</button><button class="button">8</button><button
-                        class="button">9</button><button class="button">/</button>
-                    <button class="button">4</button><button class="button">5</button><button
-                        class="button">6</button><button class="button">X</button>
-                    <button class="button">1</button><button class="button">2</button><button
-                        class="button">3</button><button class="button">-</button>
-                    <button class="button">0</button><button class="button">.</button><button
+                    <button class="button numBtn">7</button><button class="button numBtn">8</button><button
+                        class="button numBtn">9</button><button class="button">/</button>
+                    <button class="button numBtn">4</button><button class="button numBtn">5</button><button
+                        class="button numBtn">6</button><button class="button">X</button>
+                    <button class="button numBtn">1</button><button class="button numBtn">2</button><button
+                        class="button numBtn">3</button><button class="button">-</button>
+                    <button class="button numBtn">0</button><button class="button">.</button><button
                         class="button">=</button><button class="button">+</button>
 
                 </div>
@@ -119,14 +119,18 @@
         // console.log(sum([2,3]));
         // console.log(operate([4, 2], '/'));
         const input=document.querySelector('.calculator input');
-        input.value=10;
-
+        
+        let inputArr=[];
 
 
         const button = document.querySelectorAll('.calculator button');
-        button.forEach((calcBtn) => {
+        button.forEach((calcBtn) => {//To add the same eventlistener to multiple items, you need to loop thru each item to add the listener
        //     calcBtn.addEventListener('click', () => { console.log(operate([4, 2], `${calcBtn.innerText}`))});
-       calcBtn.addEventListener('click', () => { input.value=operate([4, 2], `${calcBtn.innerText}`)});
+       calcBtn.addEventListener('click', () => { 
+      
+       //  input.value=operate(inputArr, `${calcBtn.innerText}`)});
+       
+       return input.value=operate([4, 2], `${calcBtn.innerText}`)});
        
     });
 
