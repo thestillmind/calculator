@@ -54,16 +54,17 @@
                 <div class="display"><input></div>
                 <div class="buttons-container">
 
-                    <button class="button">(</button><button class="button">)</button><button
-                        class="button">%</button><button class="button">A/C</button>
-                    <button class="button numBtn">7</button><button class="button numBtn">8</button><button
-                        class="button numBtn">9</button><button class="button">/</button>
-                    <button class="button numBtn">4</button><button class="button numBtn">5</button><button
-                        class="button numBtn">6</button><button class="button">X</button>
-                    <button class="button numBtn">1</button><button class="button numBtn">2</button><button
-                        class="button numBtn">3</button><button class="button">-</button>
-                    <button class="button numBtn">0</button><button class="button">.</button><button
-                        class="button">=</button><button class="button">+</button>
+                    <button class="button operation-btn">(</button><button
+                        class="button operation-btn">)</button><button class="button operation-btn">%</button><button
+                        class="button clear-btn">A/C</button>
+                    <button class="button num-btn">7</button><button class="button num-btn">8</button><button
+                        class="button num-btn">9</button><button class="button operation-btn">/</button>
+                    <button class="button num-btn">4</button><button class="button num-btn">5</button><button
+                        class="button num-btn">6</button><button class="button operation-btn">X</button>
+                    <button class="button num-btn">1</button><button class="button num-btn">2</button><button
+                        class="button num-btn">3</button><button class="button operation-btn">-</button>
+                    <button class="button num-btn">0</button><button class="button operation-btn">.</button><button
+                        class="button equals-btn">=</button><button class="button operation-btn">+</button>
 
                 </div>
             </div>
@@ -118,21 +119,72 @@
         operator and 2 numbers and then calls one of the above functions on the numbers.*/
         // console.log(sum([2,3]));
         // console.log(operate([4, 2], '/'));
-        const input=document.querySelector('.calculator input');
-        
-        let inputArr=[];
+        const input = document.querySelector('.calculator input');
+
+        let num = '';
+        let symbol = '';
+        let arr = [];
+
+        const numberBtn = document.querySelectorAll('.calculator .num-btn');
+        numberBtn.forEach((item) => {
+            item.addEventListener('click', () => {
+                //firstNum += item.innerText;
+                //input.value=firstNum;
+
+                input.value = num += item.innerText;
+
+            });
+        });
 
 
-        const button = document.querySelectorAll('.calculator button');
-        button.forEach((calcBtn) => {//To add the same eventlistener to multiple items, you need to loop thru each item to add the listener
-       //     calcBtn.addEventListener('click', () => { console.log(operate([4, 2], `${calcBtn.innerText}`))});
-       calcBtn.addEventListener('click', () => { 
-      
-       //  input.value=operate(inputArr, `${calcBtn.innerText}`)});
-       
-       return input.value=operate([4, 2], `${calcBtn.innerText}`)});
-       
-    });
+        const operationButton = document.querySelectorAll('.calculator .operation-btn');
+        operationButton.forEach((calcBtn) => {//To add the same eventlistener to multiple items, you need to loop thru each item to add the listener
+            //     calcBtn.addEventListener('click', () => { console.log(operate([4, 2], `${calcBtn.innerText}`))});
+            calcBtn.addEventListener('click', () => {
+
+                arr.push(+num);
+                num = '';
+                symbol += calcBtn.innerText;
+
+                // operation();
+                /*  arr.push(+num);
+                  num='';
+                  symbol+=calcBtn.innerText;
+                  equals(arr,`${calcBtn.innerText}`);*/
+            });
+        });
+
+        function operation(number, button) {
+            arr.push(+num);
+            num = '';
+            symbol += calcBtn.innerText;
+            //equals(arr,`${calcBtn.innerText}`);
+        }
+        //
+
+
+        const equalsButton = document.querySelector('.calculator .equals-btn');
+        equalsButton.addEventListener('click', () => {
+            equals(arr, symbol);
+        });
+        function equals(array, symbol) {
+            arr.push(+num);
+            console.log("arr is " + array + " symbol is " + symbol);
+            if (array.length == 2) {
+                console.log("array is "+array);
+                return input.value = operate(array, symbol);
+            }
+        }
+
+        const clearBtn=document.querySelector('.calculator .clear-btn');
+        clearBtn.addEventListener('click', ()=>{
+         num = '';
+         symbol = '';
+         arr = [];
+        input.value='';
+        });
+
+
 
     </script>
 </body>
