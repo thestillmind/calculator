@@ -120,11 +120,14 @@
         let num = '';
         let symbol = '';
         let arr = [];
+        let symbolArr=[];
 
         const numberBtn = document.querySelectorAll('.calculator .num-btn');
         numberBtn.forEach((item) => {
             item.addEventListener('click', () => {
-                input.value = num += item.innerText;
+               
+                num += item.innerText;
+                input.value = num;
             });
         });
 
@@ -134,17 +137,15 @@
             calcBtn.addEventListener('click', () => {
 
                 arr.push(+num);
-                num = '';
                 symbol += calcBtn.innerText;
+                input.value=num+symbol;
+                num = '';
+            
+               // symbol += calcBtn.innerText;
+                
 
             });
         });
-
-        function operation(number, button) {
-            arr.push(+num);
-            num = '';
-            symbol += calcBtn.innerText;
-        }
 
         const equalsButton = document.querySelector('.calculator .equals-btn');
         equalsButton.addEventListener('click', () => {
